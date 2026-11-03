@@ -4,10 +4,6 @@
 
 A machine learning pipeline that uses wind turbine SCADA data to separate abnormal operating states from normal behaviour, learn the turbine's realistic "healthy" power curve, and estimate how much clean energy (and CO₂) is lost so that maintenance can be prioritised.
 
-![Actual output vs manufacturer power curve](figures/01_power_curve_raw.png)
-
----
-
 ## Problem
 
 Wind turbines are expected to follow the manufacturer's theoretical power curve, but in practice they often produce less because of faults, curtailment, shutdowns and gradual decline. SCADA records mix all of these with normal operation and carry **no fault labels**, so operators cannot easily tell which losses are recoverable.
@@ -118,30 +114,5 @@ A simple physical-rule reference used to sanity-check clusters (not used as labe
 
 `near_curve` still holds a large share of the loss because it includes the curtailment-like plateau at ~3,450 kW above rated wind speed. Separating that is the job of clustering.
 
-## Project status
 
-- [x] Data understanding
-- [x] Data preprocessing
-- [x] Feature engineering and model-ready outputs
-- [ ] Clustering (K-Means, DBSCAN)
-- [ ] Healthy power curve regression (Random Forest, XGBoost)
-- [ ] Energy loss and CO₂ quantification
-- [ ] Maintenance priority (Pareto) and report
 
-## Team
-
-| Member | Responsibility |
-|---|---|
-| Mohammad Fakhri Hakimi bin Azami | Data acquisition and understanding |
-| Nik Muhammad Afiq Aiman bin Mohd Ariff | Data preprocessing, feature engineering |
-| Muhammad Umair Arif bin Mohd Azmi | Model development, evaluation and comparison |
-| Muhammad Safuan bin Rosmi | Data preprocessing, interpretation and sustainability analysis |
-| Mohamad Ashraf Jaffery bin Mohamad Noornasrul Jaffery | Report and presentation |
-
-## References
-
-1. B. Erisen, "Wind Turbine Scada Dataset," Kaggle. https://www.kaggle.com/datasets/berkerisen/wind-turbine-scada-dataset
-2. Energy Commission Malaysia, "Grid Emission Factor (GEF) in Malaysia 2022–2024 (provisional)." https://myenergystats.st.gov.my
-3. F. Bilendo et al., "Applications and Modeling Techniques of Wind Turbine Power Curve for Wind Farms — a Review," *Energies*, 16(1), 180, 2023.
-4. R. Morrison, X. Liu and Z. Lin, "Anomaly Detection in Wind Turbine SCADA Data for Power Curve Cleaning," *Renewable Energy*, 184, 473–486, 2022.
-5. C. Bergmeir and J. M. Benítez, "On the Use of Cross-Validation for Time Series Predictor Evaluation," *Information Sciences*, 191, 192–213, 2012.
