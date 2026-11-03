@@ -1,0 +1,11 @@
+Check,Result,Action
+Raw records,"50,530",As downloaded
+Unparseable timestamps,0,Format DD MM YYYY HH:MM
+Null values (all columns),0,No imputation needed
+Exact duplicate rows,0,Dropped if present
+Duplicate timestamps,0,Averaged if present
+Missing 10-min slots,"2,030 (3.9%)",Not imputed; flagged via gap_before_min
+Largest single gap,625 slots (~4.3 days),Reported as limitation
+Impossible values removed,0,Range rules in B5
+Negative power records,57,Kept — idle/shutdown signal
+Final records,"50,530",Used for all later steps

@@ -1,0 +1,15 @@
+feature,type,reason,role
+wind_speed,Original,Main driver of power output,Clustering + regression input
+power_kw,Original,Actual output — the quantity we judge,Clustering input; regression TARGET
+theo_power_kw,Original,Manufacturer expectation,Reference only (never a regression input)
+wind_dir,Original,Bearing the wind comes from,Replaced by wd_sin / wd_cos in models
+power_ratio,Engineered,Scale-free closeness to curve; separates stop / curtail / normal,Clustering input
+residual_kw,Engineered,Size of the gap in kW; large at high wind when output is lost,Clustering input
+"wd_sin, wd_cos",Engineered,Circular encoding so 359° ≈ 1°,Regression input; optional clustering input
+dir_sector,Engineered,30° sectors for loss-by-direction tables,Reporting only
+ws_bin,Engineered,0.5 m/s bins (IEC power-curve practice),Reporting only
+"month, hour",Engineered,When losses happen; month = CV block,Reporting + CV groups only (leakage risk as inputs)
+in_operating_region,Engineered flag,wind ≥ 3.5 m/s,Selects clustering subset
+rule_state,Engineered flag,Physical-rule reference state,"Cluster sanity check, not a label"
+"actual_kwh, theo_kwh, shortfall_kwh",Engineered,Energy per 10-min record (kW × 1/6 h),Loss quantification (Safuan)
+gap_before_min,Engineered flag,Minutes since previous record,Documents missing intervals
