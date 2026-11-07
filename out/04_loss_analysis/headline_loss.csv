@@ -1,0 +1,7 @@
+measure,manufacturer_baseline,ml_baseline
+Actual energy generated (MWh),11012.8846427628,11012.8846427628
+Energy lost (MWh),1599.9925364208705,617.4898723513181
+Loss as % of potential output,12.685389017039688,5.309286227617747
+Equivalent CO2 (tonnes),1183.994476951444,456.9425055399754
+Zero-output intervals with wind >= 3.5 m/s,2220.0,2220.0
+Zero-output time (hours),370.0,370.0
