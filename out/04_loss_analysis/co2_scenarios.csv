@@ -1,0 +1,7 @@
+scenario,energy_mwh,co2_avoided_t,pct_of_actual_generation
+Recover all zero-output (shutdown-like) loss,320.60723221210003,237.24935183695402,2.9112012212239913
+Recover zero-output + underperforming loss,536.0664612882358,396.6891813532945,4.867629859725407
+Recover 50% of ML-baseline loss,308.74493617565906,228.4712527699877,2.803488333808646
+Recover all ML-baseline loss (realistic ceiling),617.4898723513181,456.9425055399754,5.606976667617292
+Recover 50% of manufacturer-baseline loss (proposal scenario),799.9962682104352,591.997238475722,7.264184581613309
+Recover all manufacturer-baseline loss (theoretical ceiling),1599.9925364208705,1183.994476951444,14.528369163226618
