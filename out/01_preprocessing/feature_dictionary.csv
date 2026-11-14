@@ -11,5 +11,5 @@ ws_bin,Engineered,0.5 m/s bins (IEC power-curve practice),Reporting only
 "month, hour",Engineered,When losses happen; month = CV block,Reporting + CV groups only (leakage risk as inputs)
 in_operating_region,Engineered flag,wind ≥ 3.5 m/s,Selects clustering subset
 rule_state,Engineered flag,Physical-rule reference state,"Cluster sanity check, not a label"
-"actual_kwh, theo_kwh, shortfall_kwh",Engineered,Energy per 10-min record (kW × 1/6 h),Loss quantification (Safuan)
+"actual_kwh, theo_kwh, shortfall_kwh",Engineered,Energy per 10-min record (kW × 1/6 h),Loss quantification
 gap_before_min,Engineered flag,Minutes since previous record,Documents missing intervals

@@ -43,30 +43,41 @@ States are inferred from data alone, so they are reported as **suspected states,
 ## Repository structure
 
 ```
-wind_turbine/
-├── windturbine.ipynb          # Data understanding, preprocessing, feature engineering
-├── wind_turbine.csv           # Raw SCADA data (Kaggle)
+windturbine/
+├── wind_turbine.csv               # Raw SCADA data (Kaggle)
+├── notebook/
+│   ├── 01_windturbine.ipynb       # Data understanding, preprocessing, feature engineering
+│   ├── 02_clustering.ipynb        # K-Means vs DBSCAN, normal-operation cluster
+│   ├── 03_regression.ipynb        # Random Forest vs XGBoost vs baselines, error analysis, explainability
+│   └── 04_loss_analysis.ipynb     # Energy loss, stop events, Pareto ranking, CO₂ scenarios
 ├── out/
-│   ├── wind_features.csv          # Full cleaned table with all engineered features
-│   ├── cluster_input_scaled.csv   # Scaled clustering input (operating region only)
-│   ├── cluster_scaler.joblib      # StandardScaler + feature list for the clustering input
-│   ├── data_quality_summary.csv   # Data quality checks and actions
-│   └── feature_dictionary.csv     # Every feature with its reason and role
-└── figures/
-    ├── 01_power_curve_raw.png
-    ├── 02_coverage_by_month.png
-    ├── 03_wind_rose.png
-    └── 04_rule_states.png
+│   ├── 01_preprocessing/          # Cleaned feature table, scaled clustering input, scaler, quality summary
+│   ├── 02_clustering/             # Clustered feature table, silhouette comparisons
+│   ├── 03_regression/             # Expected power per record, model comparison, error tables, importances
+│   └── 04_loss_analysis/          # Loss tables, stop events, Pareto list, CO₂ scenarios
+└── figures/                       # One file per report figure
 ```
+
+Every figure in the report is produced by a notebook and saved under the report's figure number:
+
+| Report figure | File | Notebook |
+| --- | --- | --- |
+| 2.1 – 2.5 | `fig2-1_wind_speed_distribution.png`, `fig2-2_active_power_distribution.png`, `fig2-3_power_curve.png`, `fig2-4_monthly_mean_power.png`, `fig2-5_feature_scales.png` | 01 |
+| 3.1 | `fig3-1_coverage_by_month.png` | 01 |
+| 4.1, 4.2 | `fig4-1_wind_rose.png`, `fig4-2_rule_states.png` | 01 |
+| 6.2 | `fig6-2_dbscan_groups.png` | 02 |
+| 6.1, 6.3, 6.4 | `fig6-1_actual_vs_predicted.png`, `fig6-3_error_by_month.png`, `fig6-4_explainability.png` | 03 |
+| 7.1 – 7.5 | `fig7-1_loss_by_state.png`, `fig7-2_pareto_loss.png`, `fig7-3_loss_by_month.png`, `fig7-4_loss_by_direction.png`, `fig7-5_loss_by_wind_speed.png` | 04 |
 
 ## Getting started
 
 ```bash
-pip install numpy pandas matplotlib scikit-learn joblib xgboost
-jupyter notebook windturbine.ipynb
+pip install numpy pandas matplotlib scikit-learn joblib xgboost jupyter
+cd notebook
+jupyter notebook
 ```
 
-Run all cells. The notebook reads `wind_turbine.csv` from the same folder (change `DATA_PATH` in the first cell if needed) and writes stage outputs to `out/01_preprocessing/` and figures to `figures/`.
+Run the notebooks in order, 01 to 04, from inside the `notebook/` folder. Each one reads the previous stage's files from `out/` and writes its own tables to `out/` and figures to `figures/`.
 
 ## Preprocessing summary
 
@@ -111,6 +122,6 @@ A simple physical-rule reference used to sanity-check clusters (not used as labe
 | underperforming       |   7,218 |           436.0 |             27.3 % |
 | below_operating_range |   9,895 |             7.6 |              0.5 % |
 
-![Rule-based reference states](figures/04_rule_states.png)
+![Rule-based reference states](figures/fig4-2_rule_states.png)
 
 `near_curve` still holds a large share of the loss because it includes the curtailment-like plateau at ~3,450 kW above rated wind speed. Separating that is the job of clustering.

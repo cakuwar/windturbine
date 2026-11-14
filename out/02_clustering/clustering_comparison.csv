@@ -1,0 +1,10 @@
+method,parameters,clusters,noise_percent,silhouette_score
+KMeans,k=3,3,0.0,0.5134581656579777
+KMeans,k=4,4,0.0,0.5252154622968366
+KMeans,k=5,5,0.0,0.4677544945520508
+KMeans,k=6,6,0.0,0.4106328464505394
+DBSCAN,"eps=0.3, min_samples=10",4,0.24363233665559247,0.6150819729029229
+DBSCAN,"eps=0.5, min_samples=10",1,0.024609326934908332,
+DBSCAN,"eps=0.7, min_samples=10",1,0.0,
+DBSCAN,"eps=0.9, min_samples=10",1,0.0,
+DBSCAN,"eps=1.1, min_samples=10",1,0.0,
