@@ -2,3 +2,5 @@
 *.pyc
 *.pyo
 *.pdf
+*.docx
+!Machine Learning Project Group 12 Dr Shuhaida.pdf
