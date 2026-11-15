@@ -55,7 +55,8 @@ windturbine/
 │   ├── 02_clustering/             # Clustered feature table, silhouette comparisons
 │   ├── 03_regression/             # Expected power per record, model comparison, error tables, importances
 │   └── 04_loss_analysis/          # Loss tables, stop events, Pareto list, CO₂ scenarios
-└── figures/                       # One file per report figure
+├── figures/                       # One file per report figure
+└── poster/                        # Infographic poster (HTML source and PNG)
 ```
 
 Every figure in the report is produced by a notebook and saved under the report's figure number:
@@ -72,7 +73,7 @@ Every figure in the report is produced by a notebook and saved under the report'
 ## Getting started
 
 ```bash
-pip install numpy pandas matplotlib scikit-learn joblib xgboost jupyter
+pip install -r requirements.txt
 cd notebook
 jupyter notebook
 ```
